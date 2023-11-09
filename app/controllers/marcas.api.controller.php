@@ -5,11 +5,14 @@ require_once './app/models/marcas.model.php';
 
 class MarcasApiController extends ApiController{
     private $modelMarca;
+    private $authHelper;
 
     public function __construct(){
         parent::__construct();
         $this->modelMarca = new MarcasModel();
+        $this->authHelper = new AuthApiHelper();  
     }
+
 
     public function showMarcas(){ //Hay que agregar un else si no se puede mostrar el listado?
         $marcas = $this->modelMarca->getMarcas();
@@ -46,5 +49,24 @@ class MarcasApiController extends ApiController{
         } else {
             $this->view->response('La marca con id= '.$id.' no existe.', 404);
         }
+    }
+    public function agregarMarca(){
+
+        $user = $this->authHelper->currentUser();
+        if(!$user){
+            $this->view->response('Sin autorización', 401);
+            return;
+        }
+        $body = $this->getData();
+
+        $nombre = $body->nombre;
+        $anio = $body->anio;
+        $localizacion = $body->localizacion;
+        $urlImg = $body->urlImg;
+
+        $id = $this->modelMarca->insertMarca($nombre, $anio, $localizacion, $urlImg);
+
+        $this->view->response('El marca fue insertado con el id= ' .$id, 201);
+
     }
 }
