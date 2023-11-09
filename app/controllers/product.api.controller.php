@@ -129,4 +129,16 @@ class ProductApiController extends ApiController{
             $this->view->response('El producto con id= ' .$id.' no existe.', 404);
         }
     }
+
+    public function PaginadoProduct($param = []){
+        $pagina_actual = 1;
+
+        if(isset($_GET['pagina'])){
+            $pagina_actual = $_GET['pagina'];
+        } else {
+            $pagina_actual = 1;
+        }
+
+        
+    }
 }
