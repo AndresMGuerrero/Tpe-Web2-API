@@ -46,9 +46,6 @@ class ProductModel{
             $sql.= ' WHERE color = ?';
         }
 
-        // echo $sql;
-        // die();
-
         $query = $this->db->prepare($sql);
         $query->execute([($parametros['color'])]);
 
@@ -108,17 +105,10 @@ class ProductModel{
     }
 
     public function updateProduct($id, $nombre, $color, $talle, $tipo, $precio, $urlImgProd, $marca){
-        //para agarrar el id que le corresponde a la marca en la tabla marcas
-        // $query = $this->db->prepare('SELECT id_marcas FROM marcas WHERE nombre_marca = ?');
-        // $query->execute([$marca]);
-
-        // $id_marca = $query->fetch(PDO::FETCH_OBJ);
-            
-        //luego cambiamos el apartado id_marca_fk con el id de la tabla marcas que le corresponde a la marca puesta desde el form
+        
         $query = $this->db->prepare('UPDATE productos SET nombre_producto = ? , color = ? , talle = ? , tipo = ? , precio = ? , url_imagenP = ?, id_marca_fk = ? WHERE id = ?');
         $query->execute([$nombre, $color, $talle, $tipo, $precio, $urlImgProd, $marca, $id]);
         
-        // $id_marca->id_marcas
     }
 
 }

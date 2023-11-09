@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2023 a las 13:08:59
+-- Tiempo de generación: 09-11-2023 a las 23:22:39
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -51,7 +51,7 @@ CREATE TABLE `marcas` (
   `nombre_marca` varchar(45) NOT NULL,
   `fecha_creacion` varchar(45) DEFAULT NULL,
   `loc_fabrica` varchar(45) DEFAULT NULL,
-  `url_imagen` varchar(500) NOT NULL
+  `url_imagen` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -59,14 +59,14 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`id_marcas`, `nombre_marca`, `fecha_creacion`, `loc_fabrica`, `url_imagen`) VALUES
-(20, 'topper', '1989', 'Argentina', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Topper_Logo.svg/1200px-Topper_Logo.svg.png'),
 (22, 'nike', '1987', 'España', 'https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/nike-hp-logos-256x256.jpg'),
 (23, 'adidas', '1970', 'Alemania', 'https://cdn-icons-png.flaticon.com/256/731/731962.png'),
 (24, 'vans', '1982', 'España', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-wo_4iwxWnSjcs-MljjbrtJ3NOIT27OyFa0Nsmq7WGfVQAQY5QO8o-5I-04fPrt8wo6o&usqp=CAU'),
 (25, 'rebook', '1982', 'Argentina', 'https://logospng.org/download/reebok/logo-reebok-256.png'),
 (26, 'puma', '1987', 'Argentina', 'https://logospng.org/download/puma/logo-puma-icon-256.png'),
 (27, 'jimmy choo', '1986', 'Japón', 'https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/495de0f1168c9cbaa7553f6fa1eb222a'),
-(28, 'new balance', '1997', 'Francia', 'https://planetabasketstore.com/images/companies/1/teste/Brands%20logo/text%20logo/New_Balance_Black_Logo_256.png?1596622716491');
+(28, 'new balance', '1997', 'Francia', 'https://planetabasketstore.com/images/companies/1/teste/Brands%20logo/text%20logo/New_Balance_Black_Logo_256.png?1596622716491'),
+(36, 'topper', '1987', 'Argentina', 'http://nuevamutualcamioneros.com/wp-content/uploads/2019/08/topper.png');
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ CREATE TABLE `productos` (
   `talle` int(11) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `precio` double NOT NULL,
-  `url_imagenP` varchar(500) NOT NULL,
+  `url_imagenP` varchar(500) DEFAULT NULL,
   `id_marca_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -132,7 +132,7 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marcas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_marcas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
