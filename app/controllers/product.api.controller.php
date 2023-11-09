@@ -17,9 +17,46 @@ class ProductApiController extends ApiController{
 
     public function showProducts($params = []){
         if(empty($params)){
-            $products = $this->modelProd-> getProductsCompleto();
-            $this ->view->response($products, 200);
-        } else {
+            $parametros = [];
+
+            $nombresCol = ["id", "nombre_producto", "color", "talle", "tipo", "precio", "url_imagenP", "id_marca_fk"];
+            
+            if(isset($_GET['sort'])&& isset($_GET['order'])){// Opción de ordenamiento por un campo a elección del usuario
+                for($i = 0; $i<count($nombresCol); $i++){// Se ve si existe la columna por la cual se quiere ordenar
+                                        
+                    if($nombresCol[$i] == $_GET['sort']){
+                        $parametros['sort']= $_GET['sort'];
+                        $parametros['order']= $_GET['order'];
+                    }
+                }
+            } elseif (isset($_GET['color'])) { //Opción de filtrado por color
+                
+                $parametros['color']= $_GET['color'];        
+                   
+                $products = $this->modelProd-> getProductosFiltrados($parametros);
+                if($products!=[]){
+                    $this ->view->response($products, 200);
+                } else {
+                    $this ->view->response('No existe el color'.$_GET['color'].'.', 400);
+                }
+                return;
+            }
+
+            if(empty($parametros)&&isset($_GET['sort'])&& isset($_GET['order'])){// Respuesta a la inexistencia de la columna elegida
+                $this->view->response('La columna por la cual se quiere ordenar ('.$_GET['sort'].') no existe', 400);
+                return;
+            }
+            
+
+            if(!empty($parametros)){ //Si están los parametros de ordenamiento se procede a ordenar.
+                $products = $this->modelProd-> getProductosOrdenados($parametros);
+                $this ->view->response($products, 200);
+            } else { // si no, se muestra la lista de productos según viene de la base de datos.            
+                $products = $this->modelProd-> getProductsCompleto();
+                $this ->view->response($products, 200);
+            }         
+
+        } else { //Si $params no está vacio quiere decir que ese dato es un ID
             $products = $this->modelProd-> getProduct($params[':ID']);
             if(!empty($products)){
                 return $this->view->response($products, 200);
@@ -29,40 +66,7 @@ class ProductApiController extends ApiController{
         }
     }
 
-    public function showProductosOrdenados($params = []){
-        $parametros = [];
-
-        //buscar consulta sql para traer los nombres de columna o armar un arreglo con los nombres de las columnas que se pueden elegir
-        
-        if(isset($_GET['sort'])){
-            $parametros['sort']= $_GET['sort'];
-        }
-
-        if(isset($_GET['order'])){
-            $parametros['order']= $_GET['order'];
-        }
-
-        
-        $products = $this->modelProd-> getProductosOrdenados($parametros);
-        $this ->view->response($products, 200);
-    }
-
-    public function showProductosPorFiltro($params = []){
-        $parametros = [];
-
-        if(isset($_GET['color'])){
-            $parametros['color']= $_GET['color'];
-        }
-                   
-        $products = $this->modelProd-> getProductosFiltrados($parametros);
-        if($products!=[]){
-            $this ->view->response($products, 200);
-        } else {
-            $this ->view->response('No existe el color', 400);
-        }
-        
-    }    
-
+    
     public function agregarProd($params = []){
         
         //token

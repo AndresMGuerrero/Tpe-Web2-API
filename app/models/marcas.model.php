@@ -20,6 +20,52 @@ class MarcasModel{
         return $marcas;
     }
 
+    public function getMarca($id){
+
+        $query = $this->db->prepare('SELECT * FROM marcas WHERE id_marcas = ?');
+        $query->execute([$id]);
+
+        $marca = $query->fetch(PDO::FETCH_OBJ);
+
+        return $marca;
+    }
+
+    public function getMarcasOrdenadas($parametros){
+
+        $sql = 'SELECT * FROM marcas';
+
+        if(isset($parametros['sort'])){
+            $sql.= ' ORDER BY '.$parametros['sort'];
+
+            if(isset($parametros['order'])){
+                $sql.= ' '.$parametros['order'];
+            }
+        }
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        $marcas = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $marcas;
+    }
+
+    public function getMarcasFiltradas($parametros){
+
+        $sql = 'SELECT * FROM marcas';
+
+        if(isset($parametros['localizacion'])){
+            $sql.= ' WHERE loc_fabrica = ?';
+        }
+
+        $query = $this->db->prepare($sql);
+        $query->execute([($parametros['localizacion'])]);
+
+        $marcas = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $marcas;
+    }
+
     public function insertMarca($nombre, $anio, $localizacion, $urlImg){
         $query = $this->db->prepare('INSERT INTO marcas (nombre_marca, fecha_creacion, loc_fabrica, url_imagen) VALUES (?,?,?,?)');
         $query->execute([$nombre, $anio, $localizacion, $urlImg]);
@@ -32,18 +78,10 @@ class MarcasModel{
         $query->execute([$id]);
     }
 
-    public function getMarca($id){
-
-        $query = $this->db->prepare('SELECT * FROM marcas WHERE id_marcas = ?');
-        $query->execute([$id]);
-
-        $marca = $query->fetch(PDO::FETCH_OBJ);
-
-        return $marca;
-    }
+    
 
     public function updateMarca($id, $nombre, $anio, $localizacion, $urlImg){
-        $query = $this->db->prepare('UPDATE marcas SET fecha_creacion = ? , loc_fabrica = ?, url_imagen = ? WHERE id_marcas = ?');
-        $query->execute([$anio, $localizacion, $urlImg, $id]);
+        $query = $this->db->prepare('UPDATE marcas SET nombre_marca = ?, fecha_creacion = ? , loc_fabrica = ?, url_imagen = ? WHERE id_marcas = ?');
+        $query->execute([$nombre, $anio, $localizacion, $urlImg, $id]);
     }
 }
