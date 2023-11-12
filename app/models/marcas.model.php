@@ -66,6 +66,25 @@ class MarcasModel{
         return $marcas;
     }
 
+    public function getMarcasPorPagina($parametros){
+        
+
+        if(isset($parametros['pagina'])){
+            $pagina = (int)$parametros['pagina'];
+            $limit = cantProdPorPag;
+            $offset = ($pagina -1)*$limit;
+
+            $query = $this->db->prepare("SELECT * FROM marcas LIMIT $offset, $limit"); //Intentamos poner los signos de pregunta y las variables en el execute pero no funcionaba.
+            $query->execute();
+
+            $products = $query->fetchAll(PDO::FETCH_OBJ);
+
+            return $products;
+        }
+
+        
+    }
+
     public function insertMarca($nombre, $anio, $localizacion, $urlImg){
         $query = $this->db->prepare('INSERT INTO marcas (nombre_marca, fecha_creacion, loc_fabrica, url_imagen) VALUES (?,?,?,?)');
         $query->execute([$nombre, $anio, $localizacion, $urlImg]);
