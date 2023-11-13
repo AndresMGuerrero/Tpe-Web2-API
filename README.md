@@ -145,14 +145,14 @@ En la pestaña "Body" deberá colocar los valores de los siguientes campos:
 
 ```
 {
-        "nombre_producto": "zapatillas",
-        "color": "rojo",
-        "talle": 39,
-        "tipo": "urbana",
-        "precio": 56000,
-        "url_imagenP": "http//...",
-        "id_marca_fk": 22
-    }
+    "nombre_producto": "zapatillas",
+    "color": "rojo",
+    "talle": 39,
+    "tipo": "urbana",
+    "precio": 56000,
+    "url_imagenP": "http//...",
+    "id_marca_fk": 22
+}
 ```
 Aclaraciones: Puede no incluir la url de la imagen y simplemente colocar doble comillas vacias (""). Puede consultar la lista de productos o la lista de marcas para saber qué "id_marca_fk" colocar según la marca de la cual sea el producto.
 
@@ -169,14 +169,14 @@ En la pestaña "Body" deberá cambiar los valores de los campos que quiera modif
 
 ```
 {
-        "nombre_producto": "zapatillas",
-        "color": "rojo",
-        "talle": 39,
-        "tipo": "urbana",
-        "precio": 56000,
-        "url_imagenP": "http//...",
-        "id_marca_fk": 22
-    }
+    "nombre_producto": "zapatillas",
+    "color": "rojo",
+    "talle": 39,
+    "tipo": "urbana",
+    "precio": 56000,
+    "url_imagenP": "http//...",
+    "id_marca_fk": 22
+}
 ```
 Aclaraciones: Puede no incluir la url de la imagen y simplemente colocar doble comillas vacias (""). Puede consultar la lista de productos o la lista de marcas para saber qué "id_marca_fk" colocar según la marca de la cual sea el producto.
 
