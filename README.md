@@ -21,7 +21,7 @@ Esta url sin ningún parámetro, utilizando el verbo GET, va a listar los produc
 
 Incorporando estos parámetros a la url podrá hacer uso de la función de ordenamiento, agregando como valor del parametro _sort_ el campo por el cual quiere ordenar los productos y como valor del parametro _order_: ASC (para ordenarlos de manera ascendente) o DESC (para ordenarlos de manera descendiente).
 
-Se puede ordenar los productos según los siguientes campos:
+Se pueden ordenar los productos según los siguientes campos:
 
 - id
 - nombre_producto
@@ -75,6 +75,37 @@ Utilizando el verbo DELETE y especificando el ID del producto (/ID), se podrá e
 Línea en router: ***$router->addRoute('marcas', 'GET', 'MarcasApiController', 'showMarcas');***
 
 Esta url sin ningún parámetro, utilizando el verbo GET, va a listar las marcas cargadas en el sitio web según vienen de la base de datos.
+
+***Uso de parámetros (siempre escribir los valores en minúsculas excepto loc_fabrica en el cual se escribe un nombre de país cuya primer letra es mayúscula)***
+
+***Parámetros sort y order:***
+
+Incorporando estos parámetros a la url podrá hacer uso de la función de ordenamiento, agregando como valor del parametro _sort_ el campo por el cual quiere ordenar las marcas y como valor del parametro _order_: ASC (para ordenarlos de manera ascendente) o DESC (para ordenarlos de manera descendiente).
+
+Se pueden ordenar las marcas según los siguientes campos:
+
+- id_marcas
+- nombre_marca
+- fecha_creacion (ordena por año)
+- loc_fabrica (ordena por país)
+
+
+Si quisiera ordenar los productos por "nombre_marca" de manera ascendente, la url quedaría de la siguiente manera: 
+***localhost/web2/TPE-Web2-API/api/marcas?sort=nombre_marca&order=ASC***
+
+***Parámetro localizacion:***
+
+Incorporando este parámetro a la url podrá hacer uso de la función de filtrado por localización, agregando como valor del parametro _localizacion_ el país por el cual quiere ordenar las marcas.
+
+Si quisiera filtrar las marcas cuya localización sea Argentina, la url quedaría de la siguiente manera: 
+***localhost/web2/TPE-Web2-API/api/marcas?localizacion=Argentina***
+
+***Parámetro pagina:***
+
+Incorporando este parámetro a la url podrá hacer uso de la función de paginación, agregando como valor del parametro _pagina_ el número de página que quiere visitar. La cantidad de marcas por página está seteado en 5.
+
+Si quisiera visitar la página número 2 y ver sus respectivas marcas, la url quedaría de la siguiente manera: 
+***localhost/web2/TPE-Web2-API/api/marcas?pagina=2***
 
 ### localhost/web2/TPE-Web2-API/api/productos/:ID (verbo GET)
 
