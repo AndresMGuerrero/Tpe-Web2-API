@@ -1,5 +1,5 @@
 # API REST para manejo de productos y marcas
-Esta API REST le permitirá manejar el ABM de los productos y marcas de el sitio web.
+Esta API REST le permitirá manejar el ABM de los productos y marcas del sitio web.
 
 ## Importar la base de datos
 importar desde PHPMyAdmin : database/db_shoespot.sql
@@ -9,13 +9,19 @@ importar desde PHPMyAdmin : database/db_shoespot.sql
 -localhost/web2/TPE-Web2-API/api/productos
 
 ## Descripcion de Enpoints 
--$router->addRoute('productos', 'GET', 'ProductApiController', 'showProducts');
--Esta linia lo que genera es un listados es este caso de todos los productos pasansole el producto a la url.
--Ejemplo: -localhost/web2/TPE-Web2-API/api/productos
 
--$router->addRoute('productos/:ID', 'GET', 'ProductApiController', 'showProducts');
--La funcion que tiene es traer un elemento por id, en este caso trae un producto por id.
--Ejemplo: localhost/web2/TPE-Web2-API/api/productos/22
+
+###localhost/web2/TPE-Web2-API/api/productos
+
+Línea en router: $router->addRoute('productos', 'GET', 'ProductApiController', 'showProducts');
+
+Esta url sin ningún parámetro va a listar los productos del sitio web según vienen de la base de datos.
+
+###localhost/web2/TPE-Web2-API/api/productos/:ID
+
+Línea en router: $router->addRoute('productos/:ID', 'GET', 'ProductApiController', 'showProducts');
+
+En este caso, si se le agrega a la url anterior, una barra y un ID se podrá traer el producto que posea el dicho ID.
 
 -$router->addRoute('productos', 'POST', 'ProductApiController', 'agregarProd');
 -Este endpoint tiene como funcion agregar un producto nuevo.
