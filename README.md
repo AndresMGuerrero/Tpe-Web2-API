@@ -15,6 +15,29 @@ Línea en router: ***$router->addRoute('productos', 'GET', 'ProductApiController
 
 Esta url sin ningún parámetro, utilizando el verbo GET, va a listar los productos del sitio web según vienen de la base de datos.
 
+***Parámetros sort y order:***
+
+Incorporando estos parametros a la url podra hacer uso de la función de ordenamiento, agregando como valor del parametro _sort_ el campo por el cual quiere ordenar los productos y como valor del parametro _order_: ASC (para ordenarlos de manera ascendente) o DESC (para ordenarlos de manera descendiente).
+
+Se puede ordenar los productos según los siguientes campos:
+
+-id
+-nombre_producto
+-color
+-talle
+-tipo
+-precio
+-id_marcas
+-nombre_marca
+
+Si quisiera ordenar los productos por "tipo" de manera ascendente, la url quedaría de la siguiente manera: ***localhost/web2/TPE-Web2-API/api/productos?sort=tipo&order=ASC***
+
+***Parámetro color:***
+
+***Parámetro marcas:***
+
+***Parámetro pagina:***
+
 ### localhost/web2/TPE-Web2-API/api/productos/:ID (verbo GET)
 
 Línea en router: ***$router->addRoute('productos/:ID', 'GET', 'ProductApiController', 'showProducts');***
