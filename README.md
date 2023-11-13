@@ -4,6 +4,10 @@ Esta API REST le permitirá manejar el ABM de los productos y marcas del sitio w
 ### Importar la base de datos
 importar desde PHPMyAdmin : database/db_shoespot.sql
 
+## Acciones que se pueden realizar con esta API
+
+**Productos:** Listar (GET, con o sin parámetros), eliminar (DELETE), agregar (POST), modificar (PUT).
+**Marcas:** Listar (GET, con o sin parámetros) y agregar (POST).
 
 ## Descripcion de Enpoints de la API
 
