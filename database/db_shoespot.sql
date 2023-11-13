@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2023 a las 23:22:39
+-- Tiempo de generación: 13-11-2023 a las 19:11:03
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -93,7 +93,11 @@ INSERT INTO `productos` (`id`, `nombre_producto`, `color`, `talle`, `tipo`, `pre
 (21, 'Zapatillas', 'rojo', 39, 'urbana', 43000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzzKtEWGIrbvP6Yf0woBkxacdQbjyXH3ZYOg&usqp=CAU', 26),
 (22, 'Zapatillas', 'rojo', 45, 'Deportivas', 32000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fawK8wsXtQDoifzDrX2rbxK_F9sB_H4GDA&usqp=CAU', 26),
 (23, 'zapatos', 'blanco', 38, 'formal', 56000, 'https://img.eobuwie.cloud/eob_product_256w_256h(8/7/a/7/87a752ab0d5e2bb39c8c2ffeed801d4843812fc0_01_5904862690506_RW.jpg,jpg)/tacon-de-aguja-deezee-kl-q2277-6-golden.jpg', 27),
-(30, 'Zapatillas', 'negro', 45, 'Deportivas', 32000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fawK8wsXtQDoifzDrX2rbxK_F9sB_H4GDA&usqp=CAU', 26);
+(30, 'Zapatillas', 'negro', 45, 'Deportivas', 32000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fawK8wsXtQDoifzDrX2rbxK_F9sB_H4GDA&usqp=CAU', 26),
+(32, 'zapatillas', 'rojo', 39, 'urbana', 56000, 'https://img.eobuwie.cloud/eob_product_256w_256h(f/5/c/5/f5c59348b165ea6932db193e15067dcee20e7e4d_02_0000303223526_RW.jpg,webp)/zapatos-nike-lebron-witness-7-dm1123-005-black-university-red-white-0000303223526.webp', 22),
+(33, 'zapatillas', 'negro', 38, 'deportivas', 29000, 'https://skipping.es/web/image/product.template/26085/image_256/%5BDC3728-004%5D%20Zapatilla%20Nike%20Revolution%206%20Negra?unique=c449c58', 22),
+(34, 'zapatos', 'negro', 42, 'formal', 75000, 'https://sastreriamilitar.mil.ar/img/p/4/0/9/409-thickbox_default.jpg', 25),
+(35, 'Zapatillas', 'negro', 45, 'deportivas', 32000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fawK8wsXtQDoifzDrX2rbxK_F9sB_H4GDA&usqp=CAU', 26);
 
 --
 -- Índices para tablas volcadas
@@ -138,7 +142,7 @@ ALTER TABLE `marcas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Restricciones para tablas volcadas

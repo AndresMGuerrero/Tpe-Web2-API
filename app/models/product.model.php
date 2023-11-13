@@ -75,7 +75,7 @@ class ProductModel{
 
         if(isset($parametros['pagina'])){
             $pagina = (int)$parametros['pagina'];
-            $limit = cantProdPorPag;
+            $limit = cantItemsPorPag;
             $offset = ($pagina -1)*$limit;
 
             $query = $this->db->prepare("SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk LIMIT $offset, $limit"); //Intentamos poner los signos de pregunta y las variables en el execute pero no funcionaba.
@@ -118,22 +118,5 @@ class ProductModel{
         
     }
 
-     public function getCant($paginas, $productosPorPagina){
-         //Necesitamos el conteo para saber cuántas páginas vamos a mostrar
-         $query = $this->db->prepare("SELECT count(*) AS conteo FROM productos");
-         $query->execute();
-         $conteo = $query->fetch(PDO::FETCH_OBJ);
-         //Para obtener las páginas dividimos el conteo entre los productos por página, y redondeamos hacia arriba
-         $paginas = ceil($conteo / $productosPorPagina);
-     }
-
-    public function getPaginado($limit, $offset){//obtenemos los productos usando ya el OFFSET y el LIMIT
-        $query = $this->db->prepare("SELECT * FROM productos LIMIT ? OFFSET ?");
-        $query->execute([$limit, $offset]);
-        $productos = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $productos;
-
-    }
-
+    
 }

@@ -71,7 +71,7 @@ class MarcasModel{
 
         if(isset($parametros['pagina'])){
             $pagina = (int)$parametros['pagina'];
-            $limit = cantProdPorPag;
+            $limit = cantItemsPorPag;
             $offset = ($pagina -1)*$limit;
 
             $query = $this->db->prepare("SELECT * FROM marcas LIMIT $offset, $limit"); //Intentamos poner los signos de pregunta y las variables en el execute pero no funcionaba.
@@ -92,15 +92,5 @@ class MarcasModel{
         return $this->db->lastInsertId();
     }
 
-    public function deleteMarca($id){
-        $query = $this->db->prepare('DELETE FROM marcas WHERE id_marcas = ?');
-        $query->execute([$id]);
-    }
-
     
-
-    public function updateMarca($id, $nombre, $anio, $localizacion, $urlImg){
-        $query = $this->db->prepare('UPDATE marcas SET nombre_marca = ?, fecha_creacion = ? , loc_fabrica = ?, url_imagen = ? WHERE id_marcas = ?');
-        $query->execute([$nombre, $anio, $localizacion, $urlImg, $id]);
-    }
 }

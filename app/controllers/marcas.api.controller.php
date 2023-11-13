@@ -76,38 +76,7 @@ class MarcasApiController extends ApiController{
         }
     }
 
-    public function borrarMarca($params = []){
-        $id = $params[':ID'];
-        $marca = $this->modelMarca->getMarca($id);
-
-        if($marca){
-            $this->modelMarca->deleteMarca($id);
-            $this->view->response('La marca con el id= '.$id. ' ha sido borrada.', 200);
-        } else {
-            $this->view->response('La marca con el id= '.$id.' no existe.', 404);
-        }
-    }
-
-    public function updateMarca($params = []){
-        $id = $params[':ID'];
-        $marca = $this->modelMarca->getMarca($id);
-
-        if($marca){
-            $body = $this->getData();
-
-            $nombre = $body->nombre_marca;
-            $anio = $body->fecha_creacion;
-            $localizacion = $body->loc_fabrica;
-            $urlImg = $body->url_imagen;
-
-            $this->modelMarca->updateMarca($id, $nombre, $anio, $localizacion, $urlImg);
-
-            $this->view->response('La marca con id= '.$id.' ha sido modificada.', 200);
-        } else {
-            $this->view->response('La marca con id= '.$id.' no existe.', 404);
-        }
-    }
-
+    
     public function agregarMarca(){
 
         $user = $this->authHelper->currentUser();

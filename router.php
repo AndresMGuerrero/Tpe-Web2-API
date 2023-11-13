@@ -20,9 +20,6 @@ $router->addRoute('productos/:ID', 'PUT', 'ProductApiController', 'updateProd');
 $router->addRoute('marcas', 'GET', 'MarcasApiController', 'showMarcas');
 $router->addRoute('marcas/:ID', 'GET', 'MarcasApiController', 'showMarcas');
 $router->addRoute('marcas', 'POST', 'MarcasApiController', 'agregarMarca');
-$router->addRoute('marcas/:ID', 'DELETE', 'MarcasApiController', 'borrarMarca');
-$router->addRoute('marcas/:ID', 'PUT', 'MarcasApiController', 'updateMarca');
 $router->addRoute('user/token', 'GET', 'UserApiController', 'getToken');
-$router->addRoute('pagina', 'GET', 'ProductApiController', 'PaginadoProduct');//se supone que funcione buscando la pagina
 
 $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
