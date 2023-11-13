@@ -11,13 +11,13 @@ importar desde PHPMyAdmin : database/db_shoespot.sql
 ## Descripcion de Enpoints 
 
 
-###localhost/web2/TPE-Web2-API/api/productos
+### localhost/web2/TPE-Web2-API/api/productos
 
 Línea en router: $router->addRoute('productos', 'GET', 'ProductApiController', 'showProducts');
 
 Esta url sin ningún parámetro va a listar los productos del sitio web según vienen de la base de datos.
 
-###localhost/web2/TPE-Web2-API/api/productos/:ID
+### localhost/web2/TPE-Web2-API/api/productos/:ID
 
 Línea en router: $router->addRoute('productos/:ID', 'GET', 'ProductApiController', 'showProducts');
 
