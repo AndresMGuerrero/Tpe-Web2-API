@@ -13,7 +13,7 @@ $router = new Router();
 
 
 $router->addRoute('productos', 'GET', 'ProductApiController', 'showProducts');
-$router->addRoute('productos/:ID', 'GET', 'ProductApiController', 'showProducts');
+$router->addRoute('productos/:ID', 'GET', 'ProductApiController', 'showProduct');
 $router->addRoute('productos', 'POST', 'ProductApiController', 'agregarProd');
 $router->addRoute('productos/:ID', 'DELETE', 'ProductApiController', 'borrarProd');
 $router->addRoute('productos/:ID', 'PUT', 'ProductApiController', 'updateProd');

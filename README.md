@@ -18,8 +18,6 @@ importar desde PHPMyAdmin : database/db_shoespot.sql
 
 Esta url sin ningún parámetro, utilizando el verbo GET, va a listar los productos del sitio web según vienen de la base de datos.
 
-***Uso de parámetros (siempre escribir los valores en minúsculas)***
-
 ***Parámetros "sort" y "order":***
 
 Incorporando estos parámetros a la url podrá hacer uso de la función de ordenamiento, agregando como valor del parametro _sort_ el campo por el cual quiere ordenar los productos y como valor del parametro _order_: ASC (para ordenarlos de manera ascendente) o DESC (para ordenarlos de manera descendiente).
@@ -85,11 +83,7 @@ Eligiendo el verbo DELETE:
 
 ### localhost/web2/TPE-Web2-API/api/marcas (verbo GET)
 
-Línea en router: ***$router->addRoute('marcas', 'GET', 'MarcasApiController', 'showMarcas');***
-
 Esta url sin ningún parámetro, utilizando el verbo GET, va a listar las marcas cargadas en el sitio web según vienen de la base de datos.
-
-***Uso de parámetros (siempre escribir los valores en minúsculas excepto loc_fabrica en el cual se escribe un nombre de país cuya primer letra es mayúscula)***
 
 ***Parámetros "sort" y "order":***
 

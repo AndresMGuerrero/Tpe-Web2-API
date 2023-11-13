@@ -43,7 +43,7 @@ class MarcasApiController extends ApiController{
             } elseif (isset($_GET['pagina'])){ //Opción de paginado
                 $parametros['pagina']= $_GET['pagina'];        
                    
-                $products = $this->modelProd-> getProductosPorPagina($parametros);
+                $products = $this->modelMarca-> getMarcasPorPagina($parametros);
                 if($products!=[]){
                     $this ->view->response($products, 200);
                 } else {
@@ -84,6 +84,7 @@ class MarcasApiController extends ApiController{
             $this->view->response('Sin autorización', 401);
             return;
         }
+        
         $body = $this->getData();
 
         $nombre = $body->nombre_marca;

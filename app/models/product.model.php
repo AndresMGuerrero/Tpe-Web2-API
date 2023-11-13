@@ -20,7 +20,7 @@ class ProductModel{
 
     public function getProductosOrdenados($parametros){
 
-        $sql = 'SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk;';
+        $sql = 'SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk';
 
         if(isset($parametros['sort'])){
             $sql.= ' ORDER BY '.$parametros['sort'];
@@ -91,7 +91,7 @@ class ProductModel{
     
     public function getProduct($id){
 
-        $query = $this->db->prepare('SELECT * FROM productos INNER JOIN marcas ON  productos.id_marca_fk = marcas.id_marcas WHERE productos.id= ?');
+        $query = $this->db->prepare('SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk WHERE productos.id= ?');
         $query->execute([$id]);
         $product = $query->fetch(PDO::FETCH_OBJ);
         
