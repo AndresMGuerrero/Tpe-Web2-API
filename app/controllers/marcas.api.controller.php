@@ -19,7 +19,7 @@ class MarcasApiController extends ApiController{
         if(empty($params)){
             $parametros = [];
 
-            $nombresCol = ["id_marcas", "nombre_marca", "fecha_creacion", "loc_fabrica", "url_imagen"];
+            $nombresCol = ["id_marcas", "nombre_marca", "fecha_creacion", "loc_fabrica", "url_imagen"]; //No pudimos resolver con una consulta sql por eso creamos el arreglo.
             
             if(isset($_GET['sort'])&& isset($_GET['order'])){// Opción de ordenamiento por un campo a elección del usuario
                 for($i = 0; $i<count($nombresCol); $i++){// Se ve si existe la columna por la cual se quiere ordenar
@@ -38,6 +38,16 @@ class MarcasApiController extends ApiController{
                     $this ->view->response($marcas, 200);
                 } else {
                     $this ->view->response('No existe la localización= '.$_GET['localizacion'].'.', 400);
+                }
+                return;
+            } elseif (isset($_GET['pagina'])){ //Opción de paginado
+                $parametros['pagina']= $_GET['pagina'];        
+                   
+                $products = $this->modelProd-> getProductosPorPagina($parametros);
+                if($products!=[]){
+                    $this ->view->response($products, 200);
+                } else {
+                    $this ->view->response('No existe la página '.$_GET['pagina'].'.', 404);
                 }
                 return;
             }

@@ -12,7 +12,7 @@ class ProductModel{
 
     
     public function getProductsCompleto(){
-        $query = $this->db->prepare('SELECT * FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk');
+        $query = $this->db->prepare('SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk');
         $query->execute();
         $products = $query->fetchAll(PDO::FETCH_OBJ);
         return $products;
@@ -20,7 +20,7 @@ class ProductModel{
 
     public function getProductosOrdenados($parametros){
 
-        $sql = 'SELECT * FROM productos';
+        $sql = 'SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk;';
 
         if(isset($parametros['sort'])){
             $sql.= ' ORDER BY '.$parametros['sort'];
@@ -38,9 +38,25 @@ class ProductModel{
         return $products;
     }
 
-    public function getProductosFiltrados($parametros){
+    public function getProductosFiltradosPorMarca($parametros){
 
-        $sql = 'SELECT * FROM productos';
+        $sql = 'SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk';
+
+        if(isset($parametros['marca'])){
+            $sql.= ' WHERE marcas.nombre_marca = ?';
+        }
+
+        $query = $this->db->prepare($sql);
+        $query->execute([($parametros['marca'])]);
+
+        $products = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $products;
+    }
+
+    public function getProductosFiltradosPorColor($parametros){
+
+        $sql = 'SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk';
 
         if(isset($parametros['color'])){
             $sql.= ' WHERE color = ?';
@@ -54,25 +70,25 @@ class ProductModel{
         return $products;
     }
 
-    public function getCampo($campo){
-        $query = $this->db->prepare('SELECT ? FROM productos');
-        $query->execute([$campo]);
+    public function getProductosPorPagina($parametros){
+        
 
-        $infoCampo = $query->fetchAll(PDO::FETCH_OBJ);
+        if(isset($parametros['pagina'])){
+            $pagina = (int)$parametros['pagina'];
+            $limit = cantProdPorPag;
+            $offset = ($pagina -1)*$limit;
 
-        return $infoCampo;
+            $query = $this->db->prepare("SELECT productos.id, productos.nombre_producto, productos.color, productos.talle, productos.tipo, productos.precio, productos.url_imagenP, productos.id_marca_fk, marcas.id_marcas, marcas.nombre_marca FROM productos INNER JOIN marcas ON marcas.id_marcas = productos.id_marca_fk LIMIT $offset, $limit"); //Intentamos poner los signos de pregunta y las variables en el execute pero no funcionaba.
+            $query->execute();
+
+            $products = $query->fetchAll(PDO::FETCH_OBJ);
+
+            return $products;
+        }
+        
     }
 
-    public function getProducts(){
-
-        $query = $this->db->prepare('SELECT * FROM productos');
-        $query->execute();
-
-        $products = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $products;
-    }
-
+    
     public function getProduct($id){
 
         $query = $this->db->prepare('SELECT * FROM productos INNER JOIN marcas ON  productos.id_marca_fk = marcas.id_marcas WHERE productos.id= ?');
@@ -82,16 +98,7 @@ class ProductModel{
         return $product;
     }
 
-    public function searchProducts($id_marca){
-        
-        $query = $this->db->prepare('SELECT * FROM productos INNER JOIN marcas ON  productos.id_marca_fk = marcas.id_marcas WHERE marcas.id_marcas= ?');
-        $query->execute([$id_marca]);
-        $products = $query->fetchAll(PDO::FETCH_OBJ);
-        
-        return $products;
-        
-    }
-
+    
     public function insertProduct($nombre, $color, $talle, $tipo, $precio, $urlImgProd, $marca){
         $query = $this->db->prepare('INSERT INTO productos (nombre_producto, color, talle, tipo, precio, url_imagenP, id_marca_fk) VALUES (?,?,?,?,?,?,?)');
         $query->execute([$nombre, $color, $talle, $tipo, $precio, $urlImgProd, $marca]);
