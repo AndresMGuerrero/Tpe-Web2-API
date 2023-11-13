@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2023 a las 19:11:03
+-- Tiempo de generación: 13-11-2023 a las 20:40:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -66,7 +66,8 @@ INSERT INTO `marcas` (`id_marcas`, `nombre_marca`, `fecha_creacion`, `loc_fabric
 (26, 'puma', '1987', 'Argentina', 'https://logospng.org/download/puma/logo-puma-icon-256.png'),
 (27, 'jimmy choo', '1986', 'Japón', 'https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/495de0f1168c9cbaa7553f6fa1eb222a'),
 (28, 'new balance', '1997', 'Francia', 'https://planetabasketstore.com/images/companies/1/teste/Brands%20logo/text%20logo/New_Balance_Black_Logo_256.png?1596622716491'),
-(36, 'topper', '1987', 'Argentina', 'http://nuevamutualcamioneros.com/wp-content/uploads/2019/08/topper.png');
+(36, 'topper', '1987', 'Argentina', 'http://nuevamutualcamioneros.com/wp-content/uploads/2019/08/topper.png'),
+(37, 'le coq', '1990', 'Francia', 'https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/91655a7393780402aca64e08f80a4776');
 
 -- --------------------------------------------------------
 
@@ -95,9 +96,9 @@ INSERT INTO `productos` (`id`, `nombre_producto`, `color`, `talle`, `tipo`, `pre
 (23, 'zapatos', 'blanco', 38, 'formal', 56000, 'https://img.eobuwie.cloud/eob_product_256w_256h(8/7/a/7/87a752ab0d5e2bb39c8c2ffeed801d4843812fc0_01_5904862690506_RW.jpg,jpg)/tacon-de-aguja-deezee-kl-q2277-6-golden.jpg', 27),
 (30, 'Zapatillas', 'negro', 45, 'Deportivas', 32000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fawK8wsXtQDoifzDrX2rbxK_F9sB_H4GDA&usqp=CAU', 26),
 (32, 'zapatillas', 'rojo', 39, 'urbana', 56000, 'https://img.eobuwie.cloud/eob_product_256w_256h(f/5/c/5/f5c59348b165ea6932db193e15067dcee20e7e4d_02_0000303223526_RW.jpg,webp)/zapatos-nike-lebron-witness-7-dm1123-005-black-university-red-white-0000303223526.webp', 22),
-(33, 'zapatillas', 'negro', 38, 'deportivas', 29000, 'https://skipping.es/web/image/product.template/26085/image_256/%5BDC3728-004%5D%20Zapatilla%20Nike%20Revolution%206%20Negra?unique=c449c58', 22),
 (34, 'zapatos', 'negro', 42, 'formal', 75000, 'https://sastreriamilitar.mil.ar/img/p/4/0/9/409-thickbox_default.jpg', 25),
-(35, 'Zapatillas', 'negro', 45, 'deportivas', 32000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fawK8wsXtQDoifzDrX2rbxK_F9sB_H4GDA&usqp=CAU', 26);
+(35, 'Zapatillas', 'negro', 45, 'deportivas', 32000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fawK8wsXtQDoifzDrX2rbxK_F9sB_H4GDA&usqp=CAU', 26),
+(36, 'zapatillas', 'verdes', 41, 'deportivas', 86000, 'https://img.eobuwie.cloud/eob_product_256w_256h(8/0/5/7/8057a26f229ee988643428d7cc83319383fe0508_03_0196941233215_st.jpg,webp)/zapatillas-new-balance-gc574hgb-verde-0000303253431.webp', 28);
 
 --
 -- Índices para tablas volcadas
@@ -136,13 +137,13 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marcas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_marcas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
