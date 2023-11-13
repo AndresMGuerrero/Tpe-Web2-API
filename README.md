@@ -15,28 +15,46 @@ Línea en router: ***$router->addRoute('productos', 'GET', 'ProductApiController
 
 Esta url sin ningún parámetro, utilizando el verbo GET, va a listar los productos del sitio web según vienen de la base de datos.
 
+***Uso de parámetros (siempre escribir los valores en minúsculas)***
+
 ***Parámetros sort y order:***
 
-Incorporando estos parametros a la url podra hacer uso de la función de ordenamiento, agregando como valor del parametro _sort_ el campo por el cual quiere ordenar los productos y como valor del parametro _order_: ASC (para ordenarlos de manera ascendente) o DESC (para ordenarlos de manera descendiente).
+Incorporando estos parámetros a la url podrá hacer uso de la función de ordenamiento, agregando como valor del parametro _sort_ el campo por el cual quiere ordenar los productos y como valor del parametro _order_: ASC (para ordenarlos de manera ascendente) o DESC (para ordenarlos de manera descendiente).
 
 Se puede ordenar los productos según los siguientes campos:
 
--id
--nombre_producto
--color
--talle
--tipo
--precio
--id_marcas
--nombre_marca
+- id
+- nombre_producto
+- color
+- talle
+- tipo
+- precio
+- id_marcas
+- nombre_marca
 
-Si quisiera ordenar los productos por "tipo" de manera ascendente, la url quedaría de la siguiente manera: ***localhost/web2/TPE-Web2-API/api/productos?sort=tipo&order=ASC***
+Si quisiera ordenar los productos por "tipo" de manera ascendente, la url quedaría de la siguiente manera: 
+***localhost/web2/TPE-Web2-API/api/productos?sort=tipo&order=ASC***
 
 ***Parámetro color:***
 
-***Parámetro marcas:***
+Incorporando este parámetro a la url podrá hacer uso de la función de filtración por color, agregando como valor del parametro _color_ el color por el cual quiere ordenar los productos.
+
+Si quisiera filtrar los productos que sean de color rojo, la url quedaría de la siguiente manera: 
+***localhost/web2/TPE-Web2-API/api/productos?color=rojo***
+
+***Parámetro marca:***
+
+Incorporando este parámetro a la url podrá hacer uso de la función de filtración por marca, agregando como valor del parametro _marca_ la marca por la cual quiere ordenar los productos.
+
+Si quisiera filtrar los productos que sean de la marca nike, la url quedaría de la siguiente manera: 
+***localhost/web2/TPE-Web2-API/api/productos?marca=nike***
 
 ***Parámetro pagina:***
+
+Incorporando este parámetro a la url podrá hacer uso de la función de paginación, agregando como valor del parametro _pagina_ el número de página que quiere visitar. La cantidad de productos por página está seteado en 5.
+
+Si quisiera visitar la página número 2 y ver sus respectivos productos, la url quedaría de la siguiente manera: 
+***localhost/web2/TPE-Web2-API/api/productos?pagina=2***
 
 ### localhost/web2/TPE-Web2-API/api/productos/:ID (verbo GET)
 
