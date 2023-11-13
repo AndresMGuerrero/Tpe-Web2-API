@@ -111,4 +111,22 @@ class ProductModel{
         
     }
 
+     public function getCant($paginas, $productosPorPagina){
+         //Necesitamos el conteo para saber cuántas páginas vamos a mostrar
+         $query = $this->db->prepare("SELECT count(*) AS conteo FROM productos");
+         $query->execute();
+         $conteo = $query->fetch(PDO::FETCH_OBJ);
+         //Para obtener las páginas dividimos el conteo entre los productos por página, y redondeamos hacia arriba
+         $paginas = ceil($conteo / $productosPorPagina);
+     }
+
+    public function getPaginado($limit, $offset){//obtenemos los productos usando ya el OFFSET y el LIMIT
+        $query = $this->db->prepare("SELECT * FROM productos LIMIT ? OFFSET ?");
+        $query->execute([$limit, $offset]);
+        $productos = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $productos;
+
+    }
+
 }

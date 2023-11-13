@@ -135,13 +135,21 @@ class ProductApiController extends ApiController{
     }
 
     public function PaginadoProduct($param = []){
-        $pagina_actual = 1;
+        $productosPorPagina = 1;
+        $pagina = 1;
 
         if(isset($_GET['pagina'])){
-            $pagina_actual = $_GET['pagina'];
+            $pagina = $_GET['pagina'];
         } else {
-            $pagina_actual = 1;
+            $pagina = 1;
         }
+        //El límite es el número de productos por página
+        $limit = $productosPorPagina;
+        //El offset es saltar X productos que viene dado por multiplicar la página - 1 * los productos por página
+        $offset = ($pagina - 1)*$productosPorPagina;
+        //$this->modelProd->getCant();
+        $this->modelProd->getPaginado($limit, $offset);
+
 
         
     }
