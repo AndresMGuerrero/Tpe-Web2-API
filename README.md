@@ -1,5 +1,5 @@
 # API REST para manejo de productos y marcas del sitio web ShoeSpot
-Esta API REST le permitirá manejar el ABM de los productos y marcas del sitio web.
+Esta API REST le permitirá manejar el ABM de los productos y marcas del sitio web. El filtrado de productos por marcas puede ser utilizado por otros sitios web de marcas específicas para recomendaciones sobre sitios donde comprar sus productos originales (como nuestro sitio). También puede ser utilizado por sitios web encargados de informar y redirigir a personas que busquen productos como los que vendemos. 
 
 ### Importar la base de datos
 importar desde PHPMyAdmin : database/db_shoespot.sql
