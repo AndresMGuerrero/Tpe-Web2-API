@@ -22,6 +22,7 @@ class ProductApiController extends ApiController{
         $nombresCol = ["id", "nombre_producto", "color", "talle", "tipo", "precio", "url_imagenP", "id_marca_fk"];//No pudimos resolverlo con una consulta sql. Por eso armamos un arreglo.
         
         if(isset($_GET['sort'])&& isset($_GET['order'])){// Opción de ordenamiento por un campo a elección del usuario
+            
             for($i = 0; $i<count($nombresCol); $i++){// Se ve si existe la columna por la cual se quiere ordenar
                                     
                 if(($nombresCol[$i] == $_GET['sort'])){
@@ -53,7 +54,7 @@ class ProductApiController extends ApiController{
             }
             return;
             
-        } elseif (isset($_GET['pagina'])){ //Opción de paginado
+        } elseif (isset($_GET['pagina'])&&!empty($_GET['pagina'])){ //Opción de paginado
             $parametros['pagina']= $_GET['pagina'];        
                 
             $products = $this->modelProd-> getProductosPorPagina($parametros);
@@ -63,7 +64,7 @@ class ProductApiController extends ApiController{
                 $this ->view->response('No existe la página '.$_GET['pagina'].'.', 404);
             }
             return;
-        }
+        } 
 
         if(empty($parametros)&&isset($_GET['sort'])&& isset($_GET['order'])){// Respuesta a la inexistencia de la columna elegida
             $this->view->response('La columna por la cual se quiere ordenar ('.$_GET['sort'].') no existe', 400);
