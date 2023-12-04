@@ -10,8 +10,6 @@ $router = new Router();
 
 //Definir rutas
 
-
-
 $router->addRoute('productos', 'GET', 'ProductApiController', 'showProducts');
 $router->addRoute('productos/:ID', 'GET', 'ProductApiController', 'showProduct');
 $router->addRoute('productos', 'POST', 'ProductApiController', 'agregarProd');

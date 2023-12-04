@@ -97,7 +97,7 @@ class ProductApiController extends ApiController{
     public function agregarProd($params = []){
         
         //token
-        $user = $this->authHelper->currentUser();
+        $user = $this->authHelper->currentUser();// Nos devuelve el payload
         if(!$user){
             $this->view->response('Sin autorización', 401);
             return;
@@ -133,7 +133,7 @@ class ProductApiController extends ApiController{
     public function updateProd($params = []){
         
         //token
-        $user = $this->authHelper->currentUser();
+        $user = $this->authHelper->currentUser();// Nos devuelve el payload
         if(!$user){
             $this->view->response('Sin autorización', 401);
             return;

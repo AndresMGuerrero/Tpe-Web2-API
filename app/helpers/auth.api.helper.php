@@ -2,14 +2,14 @@
 
 require_once 'config.php';
 
-function base64url_encode($data){
+function base64url_encode($data){ //Para codificar en base64
     return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
 }
 
 class AuthApiHelper{
 
 
-    public function getAuthHeaders(){
+    public function getAuthHeaders(){ //El encabezado puede guardarse en estos dos lugares
         $header = "";
         if(isset($_SERVER['HTTP_AUTHORIZTION'])){
             $header = $_SERVER['HTTP_AUTHORIZTION'];
@@ -27,7 +27,7 @@ class AuthApiHelper{
             'typ' => 'JWT'
         );
 
-        $header = base64url_encode(json_encode($header));
+        $header = base64url_encode(json_encode($header)); //conv en json porque son objetos
         $payload = base64url_encode(json_encode($payload));
 
         $signature = hash_hmac('SHA256', "$header.$payload", JWT_KEY, true);
