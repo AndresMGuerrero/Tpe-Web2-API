@@ -29,6 +29,7 @@ class ProductApiController extends ApiController{
                     $parametros['order']= $_GET['order'];
                 }
             }
+
         } elseif (isset($_GET['color'])) { //Opción de filtrado por color
             
             $parametros['color']= $_GET['color'];        
@@ -40,6 +41,7 @@ class ProductApiController extends ApiController{
                 $this ->view->response('No existe un producto de color '.$_GET['color'].'.', 400);
             }
             return;
+
         } elseif (isset($_GET['marca'])){ //Opción de filtrado por marca
             $parametros['marca']= $_GET['marca'];        
                 
@@ -47,9 +49,10 @@ class ProductApiController extends ApiController{
             if($products!=[]){
                 $this ->view->response($products, 200);
             } else {
-                $this ->view->response('No existe la marca '.$_GET['marca'].'.', 400);
+                $this ->view->response('No existen productos con la marca ( '.$_GET['marca'].' ).', 400);// modif
             }
             return;
+            
         } elseif (isset($_GET['pagina'])){ //Opción de paginado
             $parametros['pagina']= $_GET['pagina'];        
                 
