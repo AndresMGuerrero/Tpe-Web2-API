@@ -39,7 +39,7 @@ class ProductApiController extends ApiController{
             if($products!=[]){
                 $this ->view->response($products, 200);
             } else {
-                $this ->view->response('No existe un producto de color '.$_GET['color'].'.', 400);
+                $this ->view->response('No existe un producto de color <'.$_GET['color'].'>.', 400);
             }
             return;
 
