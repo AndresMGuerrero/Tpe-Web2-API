@@ -24,7 +24,7 @@ class ProductApiController extends ApiController{
         if(isset($_GET['sort'])&& isset($_GET['order'])){// Opción de ordenamiento por un campo a elección del usuario
             for($i = 0; $i<count($nombresCol); $i++){// Se ve si existe la columna por la cual se quiere ordenar
                                     
-                if($nombresCol[$i] == $_GET['sort']){
+                if(($nombresCol[$i] == $_GET['sort'])){
                     $parametros['sort']= $_GET['sort'];
                     $parametros['order']= $_GET['order'];
                 }

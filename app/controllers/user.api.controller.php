@@ -16,7 +16,7 @@
     }
 
     public function getToken($params = []){
-        $basic = $this->authHelper->getAuthHeaders(); //Darnos el header 'Authorization:' 'Basic: base64(usr:pass)'
+        $basic = $this->authHelper->getAuthHeaders(); //Darnos el header 'Authorization:' que tiene que tener esta forma: 'Basic: base64(usr:pass)'
 
         if(empty($basic)){
             $this->view->response('No envió encabezados de autenticación', 401);

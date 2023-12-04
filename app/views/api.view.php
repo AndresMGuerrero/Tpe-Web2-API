@@ -9,7 +9,7 @@ class APIView{
     }
     
     private function _requestStatus($code){
-        $status = array(200 => "OK", 201 => "created", 400 => "Bad request", 404 => "Not found", 500 => "Internal Server Error");
+        $status = array(200 => "OK", 201 => "created", 400 => "Bad request",401 => "Unauthorized", 404 => "Not found", 500 => "Internal Server Error");
         return (isset($status[$code]))? $status[$code] : $status[500];
     }
 }
